@@ -1,0 +1,18 @@
+# Core scientific Python
+numpy
+pandas
+matplotlib
+scikit-learn
+scipy
+
+# Neural networks and computer vision
+# For GPU-specific installation, consult https://pytorch.org/get-started/locally/
+torch
+torchvision
+
+# Notebooks and development
+jupyterlab
+ipykernel
+pytest
+joblib
+tqdm

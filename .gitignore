@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local environments
+.venv/
+venv/
+.env
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Downloaded datasets and caches
+data/*
+!data/.gitkeep
+
+# Outputs/checkpoints
+results/*
+!results/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.joblib
+
+# Local IDE files
+.vscode/
+.idea/
+.DS_Store
