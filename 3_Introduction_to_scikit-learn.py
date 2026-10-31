@@ -34,4 +34,7 @@ print("\nTraining samples:\n", X_train)
 print("\nValidation samples:\n", X_val)
 print("\nTest samples:\n", X_test)
 
-# ------------ 2.2 Different splitting techniques ------------
+# There are also other methods for splitting your data, that are particulary useful in different scenarios. For example: StratifiedKFold for Classification with class balance,
+# GroupShuffleSplit for Group-aware random train/test split, or GroupKFold if multiple samples are from the same group, or TimeSeriesSplit for Chronologically ordered data.
+
+# ------------ 2.2 Scaling and normalizing features ------------
