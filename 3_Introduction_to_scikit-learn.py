@@ -38,3 +38,34 @@ print("\nTest samples:\n", X_test)
 # GroupShuffleSplit for Group-aware random train/test split, or GroupKFold if multiple samples are from the same group, or TimeSeriesSplit for Chronologically ordered data.
 
 # ------------ 2.2 Scaling and normalizing features ------------
+
+# For this topic in particular these imports are very useful.
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import normalize
+
+# The most important difference is how these two options normalize the vector.
+
+X = np.array([
+    [10, 100],
+    [20, 200],
+    [30, 300]
+])
+
+# While the StandardScaler works column by column, effectively normalizing [[10,...],[20,...],[30,...]] and [[...,100],[...,200],[...,300]]
+# The normalize function works row, by row, effectively normalizing [[10,100]] and [20,200] and [30,300] individually
+
+scaler = StandardScaler()
+X_standardized = scaler.fit_transform(X)
+
+X_normalized = normalize(X, norm="l2")        # We use L2 here but effetively you can also use other normalizations
+
+print("Original:\n", X)
+print("\nStandardScaler:\n", X_standardized.round(3))
+print("\nL2 Normalization:\n", X_normalized.round(3))
+
+# Both have there use in difference scenarios.
+# StandardScaler: If you have data such as age, income, height ; Also for Logistic Regression, KNN, (Often) PCA
+# Normalize: (Often) for embedding comparisons, For sentence embeddings
+
+# ------------ 2.3 Handling missing values and categorical features ------------
