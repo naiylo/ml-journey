@@ -69,3 +69,32 @@ print("\nL2 Normalization:\n", X_normalized.round(3))
 # Normalize: (Often) for embedding comparisons, For sentence embeddings
 
 # ------------ 2.3 Handling missing values and categorical features ------------
+
+# To handle missing values you can utilize an imputer based on different mathematical strategies.
+
+from sklearn.impute import SimpleImputer, KNNImputer
+
+imputer = SimpleImputer(strategy="mean")
+
+X_train_clean = imputer.fit_transform(X_train)      # Here we replace all missing values with the mean (to leave the mean untouched)
+
+# To do this on categorical data we need an HotEncoder
+
+from sklearn.preprocessing import OneHotEncoder
+
+color_vector = [["red"], ["blue"], ["green"]]
+
+encoder = OneHotEncoder(
+    handle_unknown="ignore",                        # Unknown categories are encoded as all zeros during transform()
+    sparse_output=False                             # Return a regular NumPy array instead of a sparse matrix
+)
+
+categories = [["red"], ["blue"]]                    # Categories the encoder learns during fitting
+encoder.fit(categories)
+encoded = encoder.transform(color_vector)
+
+print(encoded)                                      # [[0. 1.]  -> red
+                                                    # [1. 0.]   -> blue
+                                                    # [0. 0.]]  -> green but not fitted on so 0. 0. caused by handle_unknown="ignore"
+
+# Now you know the basics of splitting, and cleaning up your data, next on we will look into combining these prepocessing steps into one pipeline.
